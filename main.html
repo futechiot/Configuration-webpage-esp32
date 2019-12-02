@@ -1,0 +1,629 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset=utf-8>
+    <meta http-equiv=X-UA-Compatible content=IE=edge>
+    <meta name=viewport content="width=device-width, initial-scale=1">
+    <title>Main</title>
+    <link href=css/bootstrap.min.css rel=stylesheet>
+    <link href=css/pixie-main.css rel=stylesheet>
+</head>
+
+<body>
+    <div class=main-box>
+        <ul class="nav nav-pills">
+            <li class=active>
+                <a data-toggle=pill href=#status>
+                    <img src=images/status.png alt>Status</a>
+            </li>
+            <li>
+                <a data-toggle=pill href=#network>
+                    <img src=images/network.png alt>Network</a>
+            </li>
+            <li id="liService">
+                <a data-toggle=pill href=#service>
+                    <img src=images/service.png alt>Service</a>
+            </li>
+            <li>
+                <a data-toggle=pill href=#other>
+                    <img src=images/other.png alt>Other</a>
+            </li>
+        </ul>
+        <div class=tab-content>
+            <div id=status class="tab-pane fade in active">
+                <table class=table>
+                    <tbody>
+                        <tr>
+                            <td class=border-none>MAC</td>
+                            <td class=text-right id="txtmac"></td>
+                        </tr>
+                        <tr>
+                            <td>Access point IP</td>
+                            <td class=text-right id="txtmyip"> </td>
+                        </tr>
+                        <tr>
+                            <td>Wi-Fi Network</td>
+                            <td class=text-right id="wsid"> </td>
+                        </tr>
+                        <tr>
+                            <td>WLAN WAN IP</td>
+                            <td class=text-right id="localip"> </td>
+                        </tr>
+
+                        <tr>
+                            <td>Active service </td>
+                            <td class=text-right id="current_service"> </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <h4>
+                    <img src=images/ap.png alt>Access Point Configuration</h4>
+                <form>
+                    <div class=form-group> <label class="grey-text font-weight-light"> AP Name</label>
+                        <input type="text" id="txtssid" class="form-control" placeholder="SSID" value="">
+                    </div>
+                    <div class=form-group> <label class="grey-text font-weight-light">AP IP</label>
+                        <input type="text" id="txtaplan" class="form-control" placeholder="ip ddress" value="">
+                    </div>
+                    <div class=form-group> <label for=defaultFormCardEmailEx class="grey-text font-weight-light">AP
+                            Password</label> <input type="password" id="txtpass" class="form-control"
+                            placeholder="Password"> </div>
+                        <input type="checkbox" onclick="Gateway_passFunction()">Show Password
+                    <div class=text-center> <button class="btn btn-block" type="button" id="apply_btn"
+                            title=Apply>Apply</button>
+                    </div>
+
+
+      <li style="color:red; font-size: 50%; ">NOTE:Press reboot button to apply any changes on hardware
+                    </li>
+                </form>
+            </div>
+
+
+            <div id=network class="tab-pane fade">
+                <div class=panel-group id=accordion>
+
+                    <div class="panel panel-default">
+                        <div class=panel-heading>
+                            <h4 class=panel-title>
+                                <a class=active data-toggle=collapse data-parent=#accordion href=#collapse1> Wi-Fi settings 
+                                    <label class=switch>
+                                        <input type=checkbox>
+                                        <span class="slider round"></span>
+                                    </label>
+                                </a>
+                            </h4>
+                        </div>
+                        <div id=collapse1 class="panel-collapse collapse">
+                            <div class=panel-body>
+                                <div class=form-group>
+                                    <label>Nearby WLAN</label>
+                                    <select class="mdb-select form-control" id="drpWLAN" placeholder="scan for wifi">
+                                        <!-- <option value=1 placeholder="scan for wifi" ></option> -->
+
+                                    </select>
+                                </div>
+                                <div class=form-group>
+                                    <label for=defaultFormCardEmailEx
+                                        class="grey-text font-weight-light">Password</label>
+                                    <input type=password id="wifi_pass" class=form-control placeholder=Password> 
+                                      <input type="checkbox" onclick="Router_passFunction()">Show Password
+
+                                </div>
+
+                                <div class=text-center>
+                                    <button class="btn btn-block" type="button" id="scan_wifi" title=scan>Scan
+                                        Wi-fi</button>
+                                </div>
+                                <div class=form-group>
+                                    <label>Mode</label>
+                                    <select class="mdb-select-repeater form-control" id="wifi_MODE">
+                                        <option value=1 class=inner-dhcp-box>dhcp</option>
+                                        <option value=2 class=inner-static-box>static</option>
+                                    </select>
+                                </div>
+                                <div class=box-4>
+                                    <form>
+                                        <div class=form-group>
+                                            <label for=defaultFormCardNameEx class="grey-text font-weight-light">
+                                                <span class=require>*</span>IP Address</label>
+                                            <input type=text id="txtipadd" class=form-control placeholder="IP Address">
+                                        </div>
+                                        <div class=form-group>
+                                            <label for=defaultFormCardEmailEx class="grey-text font-weight-light">
+                                                <span class=require>*</span>NetMask</label>
+                                            <input type=email id="net_m" class=form-control placeholder=NetMask> </div>
+                                        <div class=form-group>
+                                            <label for=defaultFormCardEmailEx class="grey-text font-weight-light">
+                                                <span class=require>*</span>Gateway Address</label>
+                                            <input type=text id="G_add" class=form-control
+                                                placeholder="Gateway Address"> </div>
+                                        <div class=form-group>
+                                            <label for=defaultFormCardEmailEx class="grey-text font-weight-light">
+                                                <span class=require>*</span>Primary DNS Address</label>
+                                            <input type=text id="P_dns" class=form-control
+                                                placeholder="Primary DNS Address"> </div>
+                                        <div class=form-group>
+                                            <label for=defaultFormCardEmailEx
+                                                class="grey-text font-weight-light">Secondary DNS Address</label>
+                                            <input type=text id="S_dns" class=form-control
+                                                placeholder="Secondary DNS Address"> </div>
+                                    </form>
+                                </div>
+                                <div class=text-center>
+                                    <button class="btn btn-block" type="button" id="con_btn"
+                                        title=Connect>Connect</button>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div id=service class="tab-pane fade">
+                <div class=form-group>
+                    <label>Service Access</label>
+                    <select class="mdb-select form-control sevice-access" id="service_acc">
+                        <option value="MQTT" class=mqtt-box>MQTT</option>
+                        <option value="HTTP" class=http-box>HTTP</option>
+                        <option value="TCP" class=TCP-box>TCP</option>
+                    </select>
+                </div>
+                <div class=form-group>
+                    <label>Upload Interval</label>
+                    <div class=row>
+                        <div class=col-md-4>
+                            <input type=text id="uinterval" class=form-control placeholder="number"> </div>
+                        <div class=col-md-8>
+                            <select class="mdb-select form-control" id="u_time">
+                                <option value=2>Second</option>
+                                <option value=3>Minute</option>
+                                <option value=4>Hour</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class=box-1 >
+                    <div class=form-group>
+                        <div class=row>
+                            <div class=col-md-8> <label>Host IP/ Address</label>
+                                <input type=text id="hipadd" class=form-control placeholder="Mqtt Broker Address">
+                            </div>
+                            <div class=col-md-4><label>Port</label>
+                                <input type=text id="port" class=form-control placeholder="1883" value=""> </div>
+                        </div>
+                    </div>
+                    <div class=form-group>
+                        <label for=defaultFormCardEmailEx class="grey-text font-weight-light">Client ID</label>
+                        <input type=text id="c_id" class=form-control placeholder="Client ID">
+                    </div>
+
+                    <div class=form-group>
+                        <label for=defaultFormCardEmailEx class="grey-text font-weight-light">Qos</label>
+                        <select class="mdb-select form-control" id="QOS">
+                            <option value=1>0</option>
+                            <option value=2>1</option>
+                            <option value=3>2</option>
+
+                        </select>
+                    </div>
+                    <div class=form-group>
+                        <label for=defaultFormCardEmailEx class="grey-text font-weight-light">Username</label>
+                        <input type=text id="U_name" class=form-control placeholder=Username> </div>
+
+                    <div class=form-group>
+                        <label for=defaultFormCardEmailEx class="grey-text font-weight-light">Password</label>
+                        <input type="text" id="s_pass" class=form-control placeholder="Password OR Token"> </div>
+                    <div class=form-group>
+                        <label for=defaultFormCardEmailEx class="grey-text font-weight-light"> Publish Topic</label>
+                        <input type=text id="p_topic" class=form-control placeholder="Status Publish Topic"> </div>
+
+                </div>
+
+                <div class=box-2>
+                    <div class=form-group>
+                        <div class=row>
+                            <div class=col-md-8>
+                                <label>Host IP/ Address</label>
+                                <input type=text id="txtHttp_host" class=form-control placeholder="iot.beaconyun.com">
+                            </div>
+                            <div class=col-md-4> <label>port</label>
+                                <input type=text id="txtHttp_port" class=form-control placeholder="1883">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class=form-group><label>Request path</label>
+                        <input type=text id="txtHttp_requestpath" class=form-control placeholder="Request path"> </div>
+                </div>
+
+                <div class=box-3>
+                    <div class=form-group>
+                        <div class=row>
+                            <div class=col-md-8> <label>Host IP/ Address</label>
+                                <input type=text id="txtTcp_host" class=form-control placeholder="iot.beaconyun.com">
+                            </div>
+                            <div class=col-md-4><label>Port</label>
+                                <input type=text id="txtTcp_port" class=form-control placeholder="1883">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class=form-group> <label for=defaultFormCardEmailEx class="grey-text font-weight-light">Client
+                            ID</label>
+                        <input type=text id="txtTcp_cid" class=form-control placeholder="Client ID">
+                    </div>
+                </div>
+
+                <div class=box-4>
+                    <div class=form-group>
+                        <div class=row>
+                            <div class=col-md-8><label>Host IP/ Address</label> <input type=text id="txtSocket_host"
+                                    class=form-control placeholder=iot.beaconyun.com> </div>
+                            <div class=col-md-4><label>Port</label> <input type=text id="txtSocket_port"
+                                    class=form-control placeholder=:1883> </div>
+                        </div>
+                    </div>
+
+                    <div class=form-group>
+                        <label for=defaultFormCardEmailEx class="grey-text font-weight-light">Client ID</label>
+                        <input type=text id="txtSocket_cid" class=form-control placeholder="Client ID"> </div>
+                </div>
+
+
+                <div class=form-group>
+                    <div class=row>
+                        <!-- <div class=col-md-6>
+
+                            <div class=text-center>
+                                <button class="btn btn-block load-btn" type=submit title="Load Default">Load
+                                    Default</button>
+                            </div>
+
+                        </div>
+ -->
+                        <div class=col-md-12>
+                            <div class=text-center>
+                                <button class="btn btn-block" type="button" id="service_btn" title=Apply>Apply</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div id=other class="tab-pane fade">
+
+                <h4>
+                    <img src=images/reboot.png alt>OTHER</h4>
+                    <div class="row"> 
+                    <div class="col-md-6">
+                    <span>Reboot</span>
+                        <a class="btn btn-block" type="button" id="reboot_btn" title=Reboot
+                            href=javascript:void(0);>Reboot</a>
+                    </div>
+					<div class="col-md-6">
+						 <span>Reset</span>
+                        <a class="btn btn-block" type="button" id="reset_btn" title=Reset
+                            href=javascript:void(0);>Reset</a>
+					</div>
+					</div>
+               <!--  <div class=combo-box>
+                    <p>
+                        <span>1.Reboot the gateway</span>
+                        <a class="btn btn-block" type="button" id="reboot_btn" title=Reboot
+                            href=javascript:void(0);>Reboot</a>
+                    </p>
+                </div>
+                <div class=combo-box>
+                    <p>
+                        <span>2.Factory reset</span>
+                        <a class="btn btn-block" type="button" id="reset_btn" title=Reset
+                            href=javascript:void(0);>Reset</a>
+                    </p>
+                </div> -->
+   
+            </div>
+        </div>
+         </div>
+        <script src=js/jquery-1.12.3.min.js> </script> <script src=js/bootstrap.min.js> </script> <script
+            src=js/pixie-custom.js> </script> <script type="text/javascript">
+
+
+                var u_interval = "";
+                var u_time = "";
+                var h_IP_add = "";
+                var port = "";
+                var client_id = "";
+                var qos = "";
+                var username = "";
+                var password = "";
+                var publish_topic = "";
+                var request_path = "";
+                var parameters = "";
+                var mainResponse = {};
+
+                $(document).ready(function () {
+
+                    $.get("/main").done(function (response) {
+                        // mac,myip,localip on static field
+                        $("#txtmac").html(response.MAC);
+                        $("#txtmyip").html(response.myIP);
+                        $("#wsid").html(response.wsid);
+                        $("#localip").html(response.localIP);
+
+                        $("#current_service").html(response.service);
+                        $("#txtssid").val(response.apname);
+                        $("#txtaplan").val(response.myIP);
+                        mainResponse = response;
+                    });
+
+                    clicevent();
+                });
+
+                function clicevent() {
+
+                    $(document).on("click", "#apply_btn", function () {
+                        var txtaplan = $("#txtaplan").val();
+                        var txtssid = $("#txtssid").val();
+                        var txtpass = $("#txtpass").val();
+
+                        $.get("/applyBtnFunction?txtaplan=" + txtaplan + "&txtssid=" + txtssid + "&txtpass=" + txtpass).done(function (response) {
+
+                            if (response == "ok") {
+                                alert("please reboot the device to apply changes");
+
+                            }
+
+                        });
+                    });
+
+                    $(document).on("click", "#set_pass", function () {
+
+                        var newpassword = $("#admin_pass").val();
+                        var confirmpassword = $("#confirm_pass1").val();
+
+                        if (newpassword == confirmpassword) {
+
+                            $.get("/adminpasswordfunction?confirmpassword=" + confirmpassword).done(function (response) {
+
+                            })
+                        }
+                        else {
+
+                            alert("Password should match");
+                        }
+
+                    });
+
+                    $(document).on("click", "#scan_wifi", function () {
+                        var scan_wifi = $("#scan_wifi").val();
+
+                        $.get("/scan_wifi?scan_wifi=" + scan_wifi).done(function (response) {
+                            console.log(response)
+                            if (response.length > 0) {
+                                var html = "";
+                                for (var item of response) {
+                                    html = html + " <option value=" + item.ssid + ">" + item.ssid + "</option>";
+                                }
+
+                                $("#drpWLAN").html(html);
+                            }
+                        });
+                    });
+
+                    $(document).on("click", "#service_btn", function () {
+                        getServiceData();
+                    });
+
+                    $(document).on("click", "#con_btn", function () {
+                        getNetWork();
+                    });
+
+                    $(document).on('change', '#service_acc', function () {
+                        // setServiceData();
+                    });
+
+                    $(document).on('click', '#liService', function () {
+
+                        setServiceData();
+                    });
+
+                    $(document).on("click", "#reboot_btn", function () {
+                        var reboot_btn = "reboot_device";
+
+                        $.get("/rebootbtnfunction?reboot_btn=" + reboot_btn).done(function (response) {
+                            if (response == "ok") {
+                                alert("after 5 second device restarted");
+
+                            }
+                        });
+                    });
+
+                    $(document).on("click", "#reset_btn", function () {
+                        var reset_btn = "reset_device";
+
+                        $.get("/resetbtnfunction?reset_btn=" + reset_btn).done(function (response) {
+
+                            if (response == "ok") {
+                                alert("device is reset, please reboot");
+
+                            }
+
+                        });
+                    });
+
+                }
+
+                function setServiceData() {
+                    if (mainResponse) {
+                        $('#service').removeClass('socket-box-active');
+                        $('#service').removeClass('mqtt-box-active');
+                        $('#service').removeClass('http-box-active');
+                        $('#service').removeClass('tcp-box-active');
+                        $('#service_acc').val(mainResponse.Service);
+                        switch (mainResponse.Service) {
+                            case "HTTP":
+                                alert("HTTP selected");
+
+                                $("#txtHttp_host").val(mainResponse.host_ip);
+                                $("#txtHttp_port").val(mainResponse.port)
+                                $('#service').addClass('http-box-active');
+                                break;
+                            case "MQTT":
+                                alert("MQTT selected");
+
+                                $("#hipadd").val(mainResponse.host_ip);
+                                $("#port").val(mainResponse.port);
+                                $("#U_name").val(mainResponse.U_name);
+                                $("#p_topic").val(mainResponse.topic);
+                                $('#service').addClass('mqtt-box-active');
+                                break;
+                            case "TCP":
+                                alert("TCP selected");
+
+                                $("#txtTcp_host").val(mainResponse.host_ip);
+                                $("#txtTcp_port").val(mainResponse.port);
+                                $("#txtTcp_cid").val(mainResponse.c_id);
+                                $('#service').addClass('tcp-box-active');
+                                break;
+                  
+                        }
+                    }
+                    else {
+
+                        console.log("response empty");
+                    }
+                }
+
+                function getNetWork() {
+                    var wifi_ssid = $("#drpWLAN :selected").text();
+                    var wifi_pass = $("#wifi_pass").val();
+                    var wifi_MODE = $("#wifi_MODE :selected").text();
+
+                    var txtipadd = $("#txtipadd").val();
+                    var net_m = $("#net_m").val();
+                    var G_add = $("#G_add").val();
+                    var P_dns = $("#P_dns").val();
+                    var S_dns = $("#S_dns").val();
+
+                    var urldata = "";
+
+                    if (wifi_MODE == "static") {
+
+                        urldata = "wifi_ssid=" + wifi_ssid + "&wifi_pass=" + wifi_pass + "&wifi_MODE=" + wifi_MODE + "&txtipadd=" + txtipadd + "&net_m=" + net_m + "&G_add=" + G_add + "&P_dns=" + P_dns + "&S_dns=" + S_dns;
+                    }
+
+                    else {
+                        urldata = "wifi_ssid=" + wifi_ssid + "&wifi_pass=" + wifi_pass + "&wifi_MODE=" + wifi_MODE;
+                    }
+
+                    if (wifi_ssid == "" || wifi_pass == "") {
+                        alert("SSID and password can't be empty");
+
+                    } else {
+
+                        $.get("/connectBtnFunction?" + urldata).done(function (response) {
+
+                            if (response == "ok") {
+                                alert("please reboot the device to apply changes");
+
+                            }
+
+                        });
+                    }
+                }
+
+
+        function Gateway_passFunction() {
+                var x = document.getElementById("txtpass");
+
+                if (x.type === "password") {
+
+                    x.type = "text";
+
+                } else {
+
+                    x.type = "password";
+
+                }
+            }
+
+                        function Router_passFunction() {
+                var x = document.getElementById("wifi_pass");
+
+                if (x.type === "password") {
+
+                    x.type = "text";
+
+                } else {
+
+                    x.type = "password";
+
+                }
+            }
+
+
+
+                function getServiceData() {
+
+                    var service_acc = $('#service_acc option:selected').text();
+                    if (service_acc == "HTTP") {
+                        u_interval = $("#uinterval").val();
+                        u_time = $("#u_time :selected").text();
+                        h_IP_add = $("#txtHttp_host").val();
+                        port = $("#txtHttp_port").val();
+                        request_path = $("#txtHttp_requestpath").val();
+
+                    } else if (service_acc == "MQTT") {
+
+                        u_interval = $("#uinterval").val();
+                        u_time = $("#u_time :selected").text();
+                        h_IP_add = $("#hipadd").val();
+                        port = $("#port").val();
+                        client_id = $("#c_id").val();
+
+                        qos = $("#QOS :selected").text();
+                        username = $("#U_name").val();
+                        password = $("#s_pass").val();
+                        publish_topic = $("#p_topic").val();
+
+                    } else if (service_acc == "TCP") {
+
+                        u_interval = $("#uinterval").val();
+                        u_time = $("#u_time :selected").text();
+                        h_IP_add = $("#txtTcp_host").val();
+                        port = $("#txtTcp_port").val();
+
+                        client_id = $("#txtTcp_cid").val();
+
+                    } 
+
+                    parameters = "{\"service\":\"" + service_acc + "\",\"host_ip\":\"" + h_IP_add + "\",\"port\":" + port + ",\"uinterval\":" + u_interval + ",\"u_time\":\"" + u_time + "\",\"c_id\":\"" + client_id + "\",\"QOS\":" + qos + ",\"U_name\":\"" + username + "\",\"s_pass\":\"" + password + "\",\"p_topic\":\"" + publish_topic + "\",\"Http_requestpath\":\"" + request_path + "\"}";
+
+                    if (h_IP_add == "" || port == "") {
+
+                        alert("Host,Port can't be empty");
+
+                    } else {
+
+                        $.get("/applyServiceFunction?parameters=" + parameters).done(function (response) {
+
+                            if (response == "ok") {
+                                alert("please reboot device to apply changes");
+
+                            }
+
+                        });
+                    }
+                }
+
+            </script>
+
+</body>
+
+</html>

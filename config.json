@@ -1,0 +1,7 @@
+{
+  "AP_name": "ESP32_PAGE",
+  "AP_pass": "12345678",
+  "AP_IP": "192.168.4.1",
+  "Admin_pass" : "admin123"
+
+}
