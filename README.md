@@ -8,6 +8,13 @@ A web page hosted on wifi accesspoint of 32 bit micro-controller to provide each
 ![service_50](https://user-images.githubusercontent.com/38309034/69948239-44251980-1515-11ea-947c-306a484070c7.jpeg)
 ![rebootreset_52](https://user-images.githubusercontent.com/38309034/69948514-cca3ba00-1515-11ea-85bb-06951b0ef737.jpeg)
 
+
+### Useful instructions
+1. Upload Configuration_Webpage.ino code to your ESp32 
+1. Uplad Data folder using Esp32 sketch data upload 
+2. Connect mobile with hotspot : ESP32_PAGE_2 
+3. Go to web browser and hit 192.168.4.1 
+
 ##### Library Used 
 
 - ESp32_arduino :-    https://github.com/espressif/arduino-esp32
