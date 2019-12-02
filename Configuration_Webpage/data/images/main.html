@@ -1,0 +1,706 @@
+
+
+<!-- iot testing webpage looping error -->
+
+<!doctype html>
+<html>
+
+<head>
+    <meta charset=utf-8>
+    <meta http-equiv=X-UA-Compatible content=IE=edge>
+    <meta name=viewport content="width=device-width, initial-scale=1">
+    <title>Main</title>
+    <link href=css/bootstrap.min.css rel=stylesheet>
+    <link href=css/pixie-main.css rel=stylesheet>
+</head>
+
+<body>
+    <div class=main-box>
+        <ul class="nav nav-pills">
+            <li class=active>
+                <a data-toggle=pill href=#status>
+                    <img src=images/status.png alt>Status</a>
+            </li>
+            <li>
+                <a data-toggle=pill href=#network>
+                    <img src=images/network.png alt>Network</a>
+            </li>
+            <li>
+                <a data-toggle=pill href=#service>
+                    <img src=images/service.png alt>Service</a>
+            </li>
+            <li>
+                <a data-toggle=pill href=#other>
+                    <img src=images/other.png alt>Other</a>
+            </li>
+        </ul>
+        <div class=tab-content>
+            <div id=status class="tab-pane fade in active">
+                <table class=table>
+                    <tbody>
+                        <tr>
+                            <td class=border-none>MAC</td>
+                            <td class=text-right><p>%PLACEHOLDER_MAC%</p></td>
+                        </tr>
+                        <tr>
+                            <td>NetworkMode</td>
+                            <td class=text-right>repeater</td>
+                        </tr>
+                        <tr>
+                            <td>ETH WAN IP</td>
+                            <td class=text-right>N/A</td>
+                        </tr>
+                        <tr>
+                            <td>WLAN WAN IP</td>
+                            <td class=text-right><p>%PLACEHOLDER_WAN_IP%</p></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <h4>
+                    <img src=images/ap.png alt>AP CONFIGURATION</h4>
+                               <form>
+                    <div class=form-group> <label class="grey-text font-weight-light">AP SSID</label>
+                        <input type="text" id="txtssid" class="form-control">
+                    </div>
+                    <div class=form-group> <label  class="grey-text font-weight-light">AP LANIP</label> 
+                    <input type="text" id="txtaplan" class="form-control"> </div>
+                    <div class=form-group> <label for=defaultFormCardEmailEx class="grey-text font-weight-light">AP
+                            Password</label> <input type="password" id="txtpass" class="form-control"> </div>
+                    <div class=text-center> <button class="btn btn-block" type="button" id="apply_btn" title=Apply>Apply</button>
+                    </div>
+                </form>
+                <h4>ADMIN PASSWORD</h4>
+                <form>
+                    <div class=form-group>
+                        <label for=defaultFormCardEmailEx class="grey-text font-weight-light">New Password</label>
+                        <input type=password id=defaultFormCardEmailEx class=form-control placeholder="New Password"> </div>
+                    <div class=form-group>
+                        <label for=defaultFormCardEmailEx class="grey-text font-weight-light">Confirm Password</label>
+                        <input type=password id=defaultFormCardEmailEx class=form-control placeholder="Confirm Password"> </div>
+                    <div class=text-center>
+                        <button class="btn btn-block" type=submit title=Apply>Apply</button>
+                    </div>
+                </form>
+            </div>
+            <div id=network class="tab-pane fade">
+                <div class=panel-group id=accordion>
+                    <div class="panel panel-default">
+                        <div class=panel-heading>
+                            <h4 class=panel-title>
+                                <a class=active data-toggle=collapse data-parent=#accordion href=#collapse1> Router
+                                    <label class=switch>
+                                        <input type=checkbox>
+                                        <span class="slider round"></span>
+                                    </label>
+                                </a>
+                            </h4>
+                        </div>
+                        <div id=collapse1 class="panel-collapse collapse">
+                            <div class=panel-body>
+                                <div class=form-group>
+                                    <label>Mode</label>
+                                    <select class="mdb-select form-control">
+                                        <option value=1 class=dhcp-box>dhcp</option>
+                                        <option value=2 class=static-box>static</option>
+                                    </select>
+                                </div>
+                                <div class=box-3>
+                                    <form>
+                                        <div class=form-group>
+                                            <label for=defaultFormCardNameEx class="grey-text font-weight-light">
+                                                <span class=require>*</span>IP Address</label>
+                                            <input type=text id=defaultFormCardNameEx class=form-control
+                                                value=192.168.0.3 placeholder="IP Address"> </div>
+                                        <div class=form-group>
+                                            <label for=defaultFormCardEmailEx class="grey-text font-weight-light">
+                                                <span class=require>*</span>NetMask</label>
+                                            <input type=email id=defaultFormCardEmailEx class=form-control
+                                                value=255.255.255.0 placeholder=NetMask> </div>
+                                        <div class=form-group>
+                                            <label for=defaultFormCardEmailEx class="grey-text font-weight-light">
+                                                <span class=require>*</span>Gateway Address</label>
+                                            <input type=text id=defaultFormCardEmailEx
+                                                class=form-control value=192.168.0.1 placeholder="Gateway Address"> </div>
+                                        <div class=form-group>
+                                            <label for=defaultFormCardEmailEx class="grey-text font-weight-light">
+                                                <span class=require>*</span>Primary DNS Address</label>
+                                            <input type=text id=defaultFormCardEmailEx
+                                                class=form-control value=114.114.114.114 placeholder="Primary DNS Address"> </div>
+                                        <div class=form-group>
+                                            <label for=defaultFormCardEmailEx class="grey-text font-weight-light">Secondary DNS Address</label>
+                                            <input type=text id=defaultFormCardEmailEx class=form-control
+                                                value=8.8.8.8 placeholder="Secondary DNS Address"> </div>
+                                    </form>
+                                </div>
+                                <div class=text-center>
+                                    <button class="btn btn-block" type=submit title=Apply>Apply</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel panel-default">
+                        <div class=panel-heading>
+                            <h4 class=panel-title>
+                                <a class=active data-toggle=collapse data-parent=#accordion href=#collapse2> Repeater
+                                    <label class=switch>
+                                        <input type=checkbox>
+                                        <span class="slider round"></span>
+                                    </label>
+                                </a>
+                            </h4>
+                        </div>
+                        <div id=collapse2 class="panel-collapse collapse">
+                            <div class=panel-body>
+                                <div class=form-group>
+                                    <label>Nearby WLAN</label>
+                                    <select class="mdb-select form-control">
+                                        <option value=1>INCORE-1</option>
+                                        <option value=2>Gooogale</option>
+                                        <option value=3>DIRECT-fYPIXIELILT_IT6msEw</option>
+                                        <option value=4>futechiot</option>
+                                        <option value=5>WEMOSAP</option>
+                                        <option value=6>DIRECT-AIPIXIELIT_IT5msGm</option>
+                                        <option value=7>ESP32ap</option>
+                                        <option value=8>VVDNCorporate</option>
+                                        <option value=9>BSNL_OUTDOOR</option>
+                                        <option value=10>Sid_AP_RJ</option>
+                                        <option value=11>VK</option>
+                                    </select>
+                                </div>
+                                <div class=form-group>
+                                    <label for=defaultFormCardEmailEx class="grey-text font-weight-light">Password</label>
+                                    <input type=password id=defaultFormCardEmailEx class=form-control placeholder=Password
+                                        value=122345678> </div>
+                                <div class=form-group>
+                                    <label>Mode</label>
+                                    <select class="mdb-select form-control">
+                                        <option value=1 class=inner-dhcp-box>dhcp</option>
+                                        <option value=2 class=inner-static-box>static</option>
+                                    </select>
+                                </div>
+                                <div class=box-4>
+                                    <form>
+                                        <div class=form-group>
+                                            <label for=defaultFormCardNameEx class="grey-text font-weight-light">
+                                                <span class=require>*</span>IP Address</label>
+                                            <input type=text id=defaultFormCardNameEx class=form-control
+                                                value=192.168.0.3 placeholder="IP Address"> </div>
+                                        <div class=form-group>
+                                            <label for=defaultFormCardEmailEx class="grey-text font-weight-light">
+                                                <span class=require>*</span>NetMask</label>
+                                            <input type=email id=defaultFormCardEmailEx class=form-control
+                                                value=255.255.255.0 placeholder=NetMask> </div>
+                                        <div class=form-group>
+                                            <label for=defaultFormCardEmailEx class="grey-text font-weight-light">
+                                                <span class=require>*</span>Gateway Address</label>
+                                            <input type=text id=defaultFormCardEmailEx
+                                                class=form-control value=192.168.0.1 placeholder="Gateway Address"> </div>
+                                        <div class=form-group>
+                                            <label for=defaultFormCardEmailEx class="grey-text font-weight-light">
+                                                <span class=require>*</span>Primary DNS Address</label>
+                                            <input type=text id=defaultFormCardEmailEx
+                                                class=form-control value=114.114.114.114 placeholder="Primary DNS Address"> </div>
+                                        <div class=form-group>
+                                            <label for=defaultFormCardEmailEx class="grey-text font-weight-light">Secondary DNS Address</label>
+                                            <input type=text id=defaultFormCardEmailEx class=form-control
+                                                value=8.8.8.8 placeholder="Secondary DNS Address"> </div>
+                                    </form>
+                                </div>
+                                <div class=text-center>
+                                    <button class="btn btn-block" type=submit title=Connect>Connect</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id=service class="tab-pane fade">
+                <div class=form-group>
+                    <label>Service Access</label>
+                    <select class="mdb-select form-control sevice-access">
+                        <option value=1 class=mqtt-box>MQTT</option>
+                        <option value=2 class=http-box>HTTP</option>
+                    </select>
+                </div>
+                <div class=form-group>
+                    <label>Upload Interval</label>
+                    <div class=row>
+                        <div class=col-md-4>
+                            <input type=text id=defaultFormCardEmailEx class=form-control value=1> </div>
+                        <div class=col-md-8>
+                            <select class="mdb-select form-control">
+                                <option value=1>Millisecond</option>
+                                <option value=2>Second</option>
+                                <option value=3>Minute</option>
+                                <option value=4>Hour</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class=box-1>
+                    <div class=form-group>
+                        <label>Url</label>
+                        <div class=row>
+                            <div class=col-md-4>
+                                <select class="mdb-select form-control">
+                                    <option value=1>tcp://</option>
+                                    <option value=2>ssl://</option>
+                                </select>
+                            </div>
+                            <div class=col-md-8>
+                                <input type=text id=defaultFormCardEmailEx class=form-control value=iot.beaconyun.com:1883 placeholder=iot.beaconyun.com:1883> </div>
+                        </div>
+                    </div>
+                    <div class=form-group>
+                        <label for=defaultFormCardEmailEx class="grey-text font-weight-light">Client ID</label>
+                        <input type=text id=defaultFormCardEmailEx class=form-control value=ac233fc0022f
+                            placeholder="Client ID"> </div>
+                    <div class=form-group>
+                        <label for=defaultFormCardEmailEx class="grey-text font-weight-light">Qos</label>
+                        <select class="mdb-select form-control">
+                            <option value=1>0</option>
+                            <option value=2>1</option>
+                        </select>
+                    </div>
+                    <div class=form-group>
+                        <label for=defaultFormCardEmailEx class="grey-text font-weight-light">Username</label>
+                        <input type=text id=defaultFormCardEmailEx class=form-control placeholder=Username> </div>
+                    <div class=form-group>
+                        <label for=defaultFormCardEmailEx class="grey-text font-weight-light">Password</label>
+                        <input type=password id=defaultFormCardEmailEx class=form-control placeholder=Password> </div>
+                    <div class=form-group>
+                        <label for=defaultFormCardEmailEx class="grey-text font-weight-light">Status Publish Topic</label>
+                        <input type=text id=defaultFormCardEmailEx class=form-control placeholder="Status Publish Topic"
+                            value=/gw/ac233fc0022f/status> </div>
+                    <div class=form-group>
+                        <label for=defaultFormCardEmailEx class="grey-text font-weight-light">Action Control Topic</label>
+                        <input type=text id=defaultFormCardEmailEx class=form-control value=/gw/ac233fc0022f/action
+                            placeholder="Action Control Topic"> </div>
+                    <div class=form-group>
+                        <label for=defaultFormCardEmailEx class="grey-text font-weight-light">Action Control Response Topic</label>
+                        <input type=text id=defaultFormCardEmailEx class=form-control
+                            placeholder="Action Control Response Topic" value=/gw/ac233fc0022f/action/response> </div>
+                    <div class=form-group>
+                        <label>BLE Data Format</label>
+                        <div class=row>
+                            <div class=col-md-6>
+                                <select class="mdb-select form-control ble-data-format1">
+                                    <option value=1 class=json-btn>Json</option>
+                                    <option value=2 class=binary-btn>Binary</option>
+                                </select>
+                            </div>
+                            <div class=col-md-6>
+                                <select class="mdb-select form-control ble-data-format2">
+                                    <option value=1 class=long-btn>Long</option>
+                                    <option value=2 class=short-btn>Short</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <!--binary-box-->
+                    <div class=binary-box>
+                        <div class=form-group>
+                            <label for=defaultFormCardEmailEx class="grey-text font-weight-light">Rssi filter(dBm)</label>
+                            <input type=text id=defaultFormCardEmailEx class=form-control placeholder="Rssi e.g. -59"> </div>
+                        <div class=form-group>
+                            <label for=defaultFormCardEmailEx class="grey-text font-weight-light">Ble mac filter(regular expression)</label>
+                            <input type=text id=defaultFormCardEmailEx class=form-control
+                                placeholder="Ble mac"> </div>
+                        <div class=form-group>
+                            <label for=defaultFormCardEmailEx class="grey-text font-weight-light">Whether to receive the only specific mac</label>
+                            <select class="mdb-select form-control">
+                                <option value=1>NO</option>
+                                <option value=2>YES</option>
+                            </select>
+                        </div>
+                    </div>
+                    <!--json-short-box-->
+                    <div class=json-short-box>
+                        <div class=form-group>
+                            <label for=defaultFormCardEmailEx class="grey-text font-weight-light">Rssi filter(dBm)</label>
+                            <input type=text id=defaultFormCardEmailEx class=form-control placeholder="Rssi e.g. -59"> </div>
+                        <div class=form-group>
+                            <label for=defaultFormCardEmailEx class="grey-text font-weight-light">Ble mac filter(regular expression)</label>
+                            <input type=text id=defaultFormCardEmailEx class=form-control
+                                placeholder="Ble mac"> </div>
+                        <div class=form-group>
+                            <label for=defaultFormCardEmailEx class="grey-text font-weight-light">Cache time when network unavailable(0~60s)</label>
+                            <input type=text id=defaultFormCardEmailEx
+                                class=form-control value=0> </div>
+                        <div class=form-group>
+                            <label for=defaultFormCardEmailEx class="grey-text font-weight-light">Whether to filter duplicate data</label>
+                            <select class="mdb-select form-control">
+                                <option value=1>YES</option>
+                                <option value=2>NO</option>
+                            </select>
+                        </div>
+                        <div class=form-group>
+                            <label for=defaultFormCardEmailEx class="grey-text font-weight-light">Whether to upload Gateway</label>
+                            <select class="mdb-select form-control">
+                                <option value=1>NO</option>
+                                <option value=2>YES</option>
+                            </select>
+                        </div>
+                        <div class=form-group>
+                            <label for=defaultFormCardEmailEx class="grey-text font-weight-light">Whether to receive the only specific mac</label>
+                            <select class="mdb-select form-control">
+                                <option value=1>NO</option>
+                                <option value=2>YES</option>
+                            </select>
+                        </div>
+                    </div>
+                    <!-- Json-long-->
+                    <div class=json-long-box>
+                        <div class=form-group>
+                            <label for=defaultFormCardEmailEx class="grey-text font-weight-light">Rssi filter(dBm)</label>
+                            <input type=text id=defaultFormCardEmailEx class=form-control placeholder="Rssi e.g. -59"> </div>
+                        <div class=form-group>
+                            <label for=defaultFormCardEmailEx class="grey-text font-weight-light">Ble name filter(regular expression)</label>
+                            <input type=text id=defaultFormCardEmailEx class=form-control
+                                placeholder="Ble name"> </div>
+                        <div class=form-group>
+                            <label for=defaultFormCardEmailEx class="grey-text font-weight-light">Ble mac filter(regular expression)</label>
+                            <input type=text id=defaultFormCardEmailEx class=form-control
+                                placeholder="Ble mac"> </div>
+                        <div class=form-group>
+                            <label for=defaultFormCardEmailEx class="grey-text font-weight-light">Cache time when network unavailable(0~60s)</label>
+                            <input type=text id=defaultFormCardEmailEx
+                                class=form-control value=0> </div>
+                        <div class=form-group>
+                            <label for=defaultFormCardEmailEx class="grey-text font-weight-light">Whether to filter duplicate data</label>
+                            <select class="mdb-select form-control">
+                                <option value=1>YES</option>
+                                <option value=2>NO</option>
+                            </select>
+                        </div>
+                        <div class=form-group>
+                            <label for=defaultFormCardEmailEx class="grey-text font-weight-light">Whether to upload iBeacon</label>
+                            <select class="mdb-select form-control">
+                                <option value=1>YES</option>
+                                <option value=2>NO</option>
+                            </select>
+                        </div>
+                        <div class=form-group>
+                            <label for=defaultFormCardEmailEx class="grey-text font-weight-light">Whether to upload S1</label>
+                            <select class="mdb-select form-control">
+                                <option value=1>NO</option>
+                                <option value=2>YES</option>
+                            </select>
+                        </div>
+                        <div class=form-group>
+                            <label for=defaultFormCardEmailEx class="grey-text font-weight-light">Whether to upload Unknown</label>
+                            <select class="mdb-select form-control">
+                                <option value=1>YES</option>
+                                <option value=2>NO</option>
+                            </select>
+                        </div>
+                        <div class=form-group>
+                            <label for=defaultFormCardEmailEx class="grey-text font-weight-light">Whether to upload Gateway</label>
+                            <select class="mdb-select form-control">
+                                <option value=1>NO</option>
+                                <option value=2>YES</option>
+                            </select>
+                        </div>
+                        <div class=form-group>
+                            <label for=defaultFormCardEmailEx class="grey-text font-weight-light">Whether to receive the only specific mac</label>
+                            <select class="mdb-select form-control">
+                                <option value=1>NO</option>
+                                <option value=2>YES</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class=box-2>
+                    <div class=form-group>
+                        <label>Url</label>
+                        <select class="mdb-select form-control">
+                            <option value=1>tcp://</option>
+                            <option value=2>ssl://</option>
+                        </select>
+                    </div>
+                    <div class=form-group>
+                        <label>BLE Data Format</label>
+                        <div class=row>
+                            <div class=col-md-6>
+                                <select class="mdb-select form-control ble-data-format3">
+                                    <option value=1 class=json-btn>Json</option>
+                                    <option value=2 class=binary-btn>Binary</option>
+                                </select>
+                            </div>
+                            <div class=col-md-6>
+                                <select class="mdb-select form-control ble-data-format4">
+                                    <option value=1 class=long-btn>Long</option>
+                                    <option value=2 class=short-btn>Short</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <!--binary-box-->
+                    <div class=binary-box1>
+                        <div class=form-group>
+                            <label for=defaultFormCardEmailEx class="grey-text font-weight-light">Rssi filter(dBm)</label>
+                            <input type=text id=defaultFormCardEmailEx class=form-control placeholder="Rssi e.g. -59"> </div>
+                        <div class=form-group>
+                            <label for=defaultFormCardEmailEx class="grey-text font-weight-light">Ble mac filter(regular expression)</label>
+                            <input type=text id=defaultFormCardEmailEx class=form-control
+                                placeholder="Ble mac"> </div>
+                        <div class=form-group>
+                            <label for=defaultFormCardEmailEx class="grey-text font-weight-light">Whether to receive the only specific mac</label>
+                            <select class="mdb-select form-control">
+                                <option value=1>NO</option>
+                                <option value=2>YES</option>
+                            </select>
+                        </div>
+                    </div>
+                    <!--json-short-box-->
+                    <div class=json-short-box1>
+                        <div class=form-group>
+                            <label for=defaultFormCardEmailEx class="grey-text font-weight-light">Rssi filter(dBm)</label>
+                            <input type=text id=defaultFormCardEmailEx class=form-control placeholder="Rssi e.g. -59"> </div>
+                        <div class=form-group>
+                            <label for=defaultFormCardEmailEx class="grey-text font-weight-light">Ble mac filter(regular expression)</label>
+                            <input type=text id=defaultFormCardEmailEx class=form-control
+                                placeholder="Ble mac"> </div>
+                        <div class=form-group>
+                            <label for=defaultFormCardEmailEx class="grey-text font-weight-light">Cache time when network unavailable(0~60s)</label>
+                            <input type=text id=defaultFormCardEmailEx
+                                class=form-control value=0> </div>
+                        <div class=form-group>
+                            <label for=defaultFormCardEmailEx class="grey-text font-weight-light">Whether to filter duplicate data</label>
+                            <select class="mdb-select form-control">
+                                <option value=1>YES</option>
+                                <option value=2>NO</option>
+                            </select>
+                        </div>
+                        <div class=form-group>
+                            <label for=defaultFormCardEmailEx class="grey-text font-weight-light">Whether to upload Gateway</label>
+                            <select class="mdb-select form-control">
+                                <option value=1>NO</option>
+                                <option value=2>YES</option>
+                            </select>
+                        </div>
+                        <div class=form-group>
+                            <label for=defaultFormCardEmailEx class="grey-text font-weight-light">Whether to receive the only specific mac</label>
+                            <select class="mdb-select form-control">
+                                <option value=1>NO</option>
+                                <option value=2>YES</option>
+                            </select>
+                        </div>
+                    </div>
+                    <!-- Json-long-->
+                    <div class=json-long-box1>
+                        <div class=form-group>
+                            <label for=defaultFormCardEmailEx class="grey-text font-weight-light">Rssi filter(dBm)</label>
+                            <input type=text id=defaultFormCardEmailEx class=form-control placeholder="Rssi e.g. -59"> </div>
+                        <div class=form-group>
+                            <label for=defaultFormCardEmailEx class="grey-text font-weight-light">Ble name filter(regular expression)</label>
+                            <input type=text id=defaultFormCardEmailEx class=form-control
+                                placeholder="Ble name"> </div>
+                        <div class=form-group>
+                            <label for=defaultFormCardEmailEx class="grey-text font-weight-light">Ble mac filter(regular expression)</label>
+                            <input type=text id=defaultFormCardEmailEx class=form-control
+                                placeholder="Ble mac"> </div>
+                        <div class=form-group>
+                            <label for=defaultFormCardEmailEx class="grey-text font-weight-light">Cache time when network unavailable(0~60s)</label>
+                            <input type=text id=defaultFormCardEmailEx
+                                class=form-control value=0> </div>
+                        <div class=form-group>
+                            <label for=defaultFormCardEmailEx class="grey-text font-weight-light">Whether to filter duplicate data</label>
+                            <select class="mdb-select form-control">
+                                <option value=1>YES</option>
+                                <option value=2>NO</option>
+                            </select>
+                        </div>
+                        <div class=form-group>
+                            <label for=defaultFormCardEmailEx class="grey-text font-weight-light">Whether to upload iBeacon</label>
+                            <select class="mdb-select form-control">
+                                <option value=1>YES</option>
+                                <option value=2>NO</option>
+                            </select>
+                        </div>
+                        <div class=form-group>
+                            <label for=defaultFormCardEmailEx class="grey-text font-weight-light">Whether to upload S1</label>
+                            <select class="mdb-select form-control">
+                                <option value=1>NO</option>
+                                <option value=2>YES</option>
+                            </select>
+                        </div>
+                        <div class=form-group>
+                            <label for=defaultFormCardEmailEx class="grey-text font-weight-light">Whether to upload Unknown</label>
+                            <select class="mdb-select form-control">
+                                <option value=1>YES</option>
+                                <option value=2>NO</option>
+                            </select>
+                        </div>
+                        <div class=form-group>
+                            <label for=defaultFormCardEmailEx class="grey-text font-weight-light">Whether to upload Gateway</label>
+                            <select class="mdb-select form-control">
+                                <option value=1>NO</option>
+                                <option value=2>YES</option>
+                            </select>
+                        </div>
+                        <div class=form-group>
+                            <label for=defaultFormCardEmailEx class="grey-text font-weight-light">Whether to receive the only specific mac</label>
+                            <select class="mdb-select form-control">
+                                <option value=1>NO</option>
+                                <option value=2>YES</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class=form-group>
+                    <div class=row>
+                        <div class=col-md-6>
+                            <div class=text-center>
+                                <button class="btn btn-block load-btn" type=submit title="Load Default">Load Default</button>
+                            </div>
+                        </div>
+                        <div class=col-md-6>
+                            <div class=text-center>
+                                <button class="btn btn-block" type=submit title=Apply>Apply</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id=other class="tab-pane fade">
+                <h4>
+                    <img src=images/light.png alt>LEDS CONFIGURATION</h4>
+                <div class=form-group>
+                    <label for=defaultFormCardEmailEx class="grey-text font-weight-light">Enable leds long brightly?</label>
+                    <select class="mdb-select form-control">
+                        <option value=1>YES</option>
+                        <option value=2>NO</option>
+                    </select>
+                </div>
+                <div class=form-group>
+                    <div class=text-center>
+                        <button class="btn btn-block" type=submit title=Apply>Apply</button>
+                    </div>
+                </div>
+                <h4>
+                    <img src=images/timezone.png alt>TIME CONFIGURATION</h4>
+                <div class=form-group>
+                    <label for=defaultFormCardEmailEx class="grey-text font-weight-light">Timezone</label>
+                    <input type=text id=defaultFormCardEmailEx class=form-control value=UTC placeholder=Timezone> </div>
+                <div class=form-group>
+                    <label for=defaultFormCardEmailEx class="grey-text font-weight-light">Ntp Server List</label>
+                    <input type=text id=defaultFormCardEmailEx class=form-control value=0.openwrt.pool.ntp.org
+                        placeholder=Ntp1> </div>
+                <div class=form-group>
+                    <input type=text id=defaultFormCardEmailEx class=form-control value=1.openwrt.pool.ntp.org placeholder=Ntp2> </div>
+                <div class=form-group>
+                    <input type=text id=defaultFormCardEmailEx class=form-control value=2.openwrt.pool.ntp.org placeholder=Ntp3> </div>
+                <div class=form-group>
+                    <input type=text id=defaultFormCardEmailEx class=form-control value=3.openwrt.pool.ntp.org placeholder=Ntp4> </div>
+                <div class=form-group>
+                    <div class=text-center>
+                        <button class="btn btn-block" type=submit title=Apply>Apply</button>
+                    </div>
+                </div>
+                <h4>
+                    <img src=images/upgrade.png alt>FIRMWARE UPGRADE</h4>
+                <p>Current Version: v1.3.4</p>
+                <div class=form-group>
+                    <label for=defaultFormCardEmailEx class="grey-text font-weight-light">Upgrade Type</label>
+                    <select class="mdb-select form-control upgeade-tpe-box">
+                        <option value=1>USB Upgrade</option>
+                        <option value=2>OTA Upgrade</option>
+                        <option value=3>Customization Upgrade</option>
+                    </select>
+                </div>
+                <div class=usb-upgeade-box>
+                    <ul>
+                        <li>Rename the firmware to "thingoo-upgrade.bin;</li>
+                        <li>Copy the thingoo-upgrade.bin to the root directory of USB-Stick;</li>
+                        <li>Insert the USB-Stick into Gateway Device.</li>
+                    </ul>
+                </div>
+                <div class=ota-upgrade-box>
+                    <div class=form-group>
+                        <select class="mdb-select form-control">
+                            <option value=1>v1.2.0</option>
+                            <option value=2>v1.3.0</option>
+                            <option value=3>v1.3.1</option>
+                            <option value=4>v1.3.2</option>
+                            <option value=5>v1.3.3</option>
+                            <option value=6>v1.3.4</option>
+                            <option value=7>v1.3.5</option>
+                            <option value=8>v1.3.6</option>
+                            <option value=9>v1.3.7</option>
+                            <option value=10>v1.3.8</option>
+                            <option value=11>v1.3.9</option>
+                            <option value=12>v1.3.10</option>
+                            <option value=13>v1.4.0</option>
+                        </select>
+                    </div>
+                    <div class=inner-con-box>
+                        <p>version: v1.3.1</p>
+                        <p>model: g1-b</p>
+                        <p>bug_fix:</p>
+                        <ul>
+                            <li>Fix Load default button doesn't work;</li>
+                            <li>Fix the problem display of LED lamp when using HTTP protocol.</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class=customization-box>
+                    <div class=form-group>
+                        <label for=defaultFormCardEmailEx class="grey-text font-weight-light">Version</label>
+                        <input type=text id=defaultFormCardEmailEx class=form-control placeholder=Version> </div>
+                </div>
+                <div class=form-group>
+                    <div class=text-center>
+                        <button class="btn btn-block" type=submit title=Upgrade>Upgrade</button>
+                    </div>
+                </div>
+                <h4>
+                    <img src=images/periperal.png alt>PERIPERAL</h4>
+                <div class=form-group>
+                    <div class=text-center>
+                        <button class="btn btn-block" type=submit title=Upgrade>Upgrade</button>
+                    </div>
+                </div>
+                <h4>
+                    <img src=images/reboot.png alt>OTHER</h4>
+                <div class=combo-box>
+                    <p>
+                        <span>1.Reboot the gateway</span>
+                        <a class=btn title=Reboot href=javascript:void(0);>Reboot</a>
+                    </p>
+                </div>
+                <div class=combo-box>
+                    <p>
+                        <span>2.Factory reset</span>
+                        <a class=btn title=Reset href=javascript:void(0);>Reset</a>
+                    </p>
+                </div>
+                <div class=combo-box>
+                    <p>
+                        <span>3.Close the AP</span>
+                        <a class=btn title=Close href=javascript:void(0);>Close</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <script src=js/jquery-1.12.3.min.js></script>
+        <script src=js/bootstrap.min.js></script>
+        <script src=js/pixie-custom.js></script> 
+
+         <script type="text/javascript">
+                $(document).on("click", "#apply_btn", function () {
+                    var txtaplan=$("#txtaplan").val();
+                    var txtssid=$("#txtssid").val();
+                    var txtpass=$("#txtpass").val();
+
+                     $.get("/applyBtnFunction?txtaplan="+txtaplan+"&txtssid="+txtssid+"&txtpass="+txtpass).done(function(response){
+                        
+                        
+                        console.log(response.data);
+                        $("#setIP").html(response.data);
+                        }).fail(function(data){alert(JSON.stringify(data))})
+                })
+            </script>
+</body>
+
+</html>

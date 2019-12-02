@@ -1,0 +1,80 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset=utf-8>
+    <meta http-equiv=X-UA-Compatible content=IE=edge>
+    <meta name=viewport content="width=device-width, initial-scale=1">
+    <title>Login</title>
+    <link href=css/bootstrap.min.css rel=stylesheet>
+    <link href=css/pixie-main.css rel=stylesheet>
+</head>
+
+<body>
+    <div class=login-box>
+        <!-- Default form login -->
+        <form class="text-center border border-light">
+            <p class=h3>Login</p> <!-- Email -->
+            <div class=form-group> <input type=text id="ssid" class=form-control placeholder=Username>
+            </div> <!-- Password -->
+            <div class=form-group> <input type=password id="pass" class=form-control placeholder=Password>
+            </div> <!-- Sign in button -->
+            <button class="btn btn-block" type="button" id="btnLogin">Login</button>
+            <!-- <a class="btn btn-block" type=submit title=Login href=main.html>Login</a> -->
+        </form> <!-- Default form login -->
+    </div>
+    <script src=js/jquery-1.12.3.min.js> </script> <script src=js/bootstrap.min.js> </script> <script
+        type="text/javascript">
+
+
+            // $(document).on("click", "#btnLogin", function () {
+
+            //     var email = $("#ssid").val();
+            //     var pwd = $("#pass").val();
+
+            //     if (email == username && pwd == password) {
+            //         $.get("/login").done(function (response) {
+            //             localStorage.setItem("MACADD", response);
+            //             window.open("main.html");
+            //             //alert(response);
+            //         });
+            //     }
+            //     else {
+            //         alert("UserNmae or Passowrd incorrect");
+            //     }
+
+            // });
+
+
+
+            $(document).ready(function () {
+
+
+                $.get("/login").done(function (response) {
+                    password = response;
+                });
+
+                $(document).on("click", "#btnLogin", function () {
+
+                    var email = $("#ssid").val();
+                    var pwd = $("#pass").val();
+
+                    if (email == "admin" && pwd == password) {
+                        // localStorage.setItem("MACADD", response);
+                        //   alert(password);
+                        window.open("main.html");
+                    }
+                    else {
+
+                        alert("UserNmae or Passowrd incorrect");
+
+                    }
+
+                });
+
+            });
+        </script>
+
+</body>
+
+</html>
