@@ -9,11 +9,18 @@ A web page hosted on wifi accesspoint of 32 bit micro-controller to provide each
 ![rebootreset_52](https://user-images.githubusercontent.com/38309034/69948514-cca3ba00-1515-11ea-85bb-06951b0ef737.jpeg)
 
 
-### Useful instructions
-1. Upload Configuration_Webpage.ino code to your ESp32 
-1. Uplad Data folder using Esp32 sketch data upload 
-2. Connect mobile with hotspot : ESP32_PAGE_2 
-3. Go to web browser and hit 192.168.4.1 
+### Configuration Process
+1. Upload .ino code to your ESP32.
+1. Uplad Data folder using Esp32 sketch data upload.
+2. Connect mobile with hotspot : ESP32_PAGE_2.
+3. Go to web browser and hit 192.168.4.1.
+4. Scan for your wifi network, connect with it.
+5. Press Reboot. 
+6. esp32 is now connected with your wifi network.
+7. Go to service section give necessary server credential for MQTT or HTTP or TCP to connect. 
+8. press reboot.
+9. esp32 will connect with your server and send your data to your server. 
+
 
 ##### Library Used 
 
